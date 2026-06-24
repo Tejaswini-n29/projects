@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartHire AI - Virtual Interview</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="glass-container">
+        <header>
+            <h1>SmartHire AI</h1>
+            <p>AI-Powered Virtual Interview Simulator with Emotion Detection and Resume-Based Adaptive Questioning</p>
+        </header>
+
+        <main>
+            <!-- Screen 1: Setup -->
+            <section id="setup-screen" class="active">
+                <h2>Interview Setup</h2>
+                
+                <div class="setup-form">
+                    <div class="form-group">
+                        <label for="role-input">Target Role:</label>
+                        <input type="text" id="role-input" placeholder="e.g., Software Engineer, Data Scientist" class="text-input" value="Software Engineer">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="company-input">Target Company (Optional):</label>
+                        <select id="company-input" class="text-input">
+                            <option value="Generic">Generic (Standard Interview)</option>
+                            <option value="Google">Google</option>
+                            <option value="Amazon">Amazon</option>
+                            <option value="Microsoft">Microsoft</option>
+                            <option value="TCS">TCS</option>
+                            <option value="Meta">Meta</option>
+                            <option value="Apple">Apple</option>
+                            <option value="Netflix">Netflix</option>
+                            <option value="Tesla">Tesla</option>
+                            <option value="Startup">Startup (Fast-paced)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group file-upload-group">
+                        <label for="resume-upload">Upload Resume (PDF):</label>
+                        <input type="file" id="resume-upload" accept=".pdf" class="file-input">
+                        <p class="upload-hint">We'll generate personalized questions based on your experience!</p>
+                    </div>
+                    
+                    <button id="start-btn" class="primary-btn">Start Interview</button>
+                    <p id="setup-loading" class="hidden">Parsing Resume and Generating Questions...</p>
+                </div>
+            </section>
+
+            <!-- Screen 2: Interview -->
+            <section id="interview-screen" class="hidden">
+                <div class="interview-layout">
+                    <div class="video-section">
+                        <div class="video-container">
+                            <video id="webcam" autoplay muted playsinline></video>
+                            <div id="recording-indicator" class="hidden">
+                                <span class="dot"></span> Recording...
+                            </div>
+                            <div id="focus-indicator" class="focus-good">Focus: High</div>
+                        </div>
+                        <div class="controls">
+                            <button id="record-answer-btn" class="primary-btn">Record Answer</button>
+                            <button id="stop-answer-btn" class="secondary-btn hidden">Stop Recording</button>
+                            <button id="toggle-code-btn" class="tertiary-btn">Toggle Code Mode</button>
+                            <button id="finish-btn" class="tertiary-btn hidden">End Interview</button>
+                        </div>
+                    </div>
+                    
+                    <div class="chat-section">
+                        <div class="chat-box" id="chat-box">
+                            <!-- Chat messages will be injected here -->
+                        </div>
+                        
+                        <!-- Live Coding Editor (Hidden by default) -->
+                        <div id="code-section" class="hidden">
+                            <textarea id="code-editor" spellcheck="false" placeholder="// Write your code here..."></textarea>
+                            <button id="submit-code-btn" class="primary-btn">Submit Code</button>
+                        </div>
+                        
+                        <p id="processing-status" class="hidden">AI is analyzing your response...</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Screen 3: Results -->
+            <section id="results-screen" class="hidden">
+                <h2>Performance Dashboard</h2>
+                <div class="results-grid">
+                    <div class="result-card">
+                        <h3>Technical Score</h3>
+                        <p id="final-score" class="score-text">--/10</p>
+                    </div>
+                </div>
+                
+                <div class="feedback-section">
+                    <h3>Personalized Improvement Plan</h3>
+                    <div id="improvement-plan" class="markdown-content">
+                        Generating your roadmap...
+                    </div>
+                </div>
+                <button id="restart-btn" class="primary-btn">Start New Session</button>
+            </section>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

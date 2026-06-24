@@ -1,0 +1,12 @@
+fastapi
+uvicorn
+python-multipart
+faster-whisper
+opencv-python
+deepface
+numpy
+tf-keras
+google-generativeai
+PyPDF2
+mediapipe
+python-dotenv
